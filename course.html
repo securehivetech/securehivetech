@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SecureHive Academy</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section class="sub-header">
+      <nav>
+        <a href="index.html"><img src="./images/logo.png" alt="SecureHive Logo" /></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa-solid fa fa-xmark" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="./about.html">ABOUT</a></li>
+            <li><a href="./course.html">COURSES</a></li>
+            <li><a href="./blog.html">BLOG</a></li>
+            <li><a href="./contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+        <i class="fa-solid fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <h1>Our Courses</h1>
+    </section>
+
+    <!-- Courses Section -->
+<section class="course">
+  <h1>Cybersecurity Programs We Offer</h1>
+  <p>SecureHive Academy empowers students worldwide with hands-on cybersecurity training, from foundations to professional-level certifications.</p>
+
+  <div class="row">
+    <!-- Beginner Courses -->
+    <div class="course-col">
+      <h3>Introduction to Cybersecurity</h3>
+      <p>Learn the core concepts of cybersecurity, including threats, vulnerabilities, and defense basics.</p>
+      <span class="track-label">Beginner Track</span>
+    </div>
+
+    <div class="course-col">
+      <h3>Networking Basics</h3>
+      <p>Understand how networks work, covering IP, DNS, ports, and basic protocols.</p>
+      <span class="track-label">Beginner Track</span>
+    </div>
+
+    <div class="course-col">
+      <h3>Safe Browsing & Online Privacy</h3>
+      <p>Learn how to protect your online presence and browse securely.</p>
+      <span class="track-label">Beginner Track</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Intermediate Courses -->
+    <div class="course-col">
+      <h3>Wireshark for Network Analysis</h3>
+      <p>Analyze network packets to detect malicious activity and troubleshoot issues.</p>
+      <span class="track-label">Intermediate Track</span>
+    </div>
+
+    <div class="course-col">
+      <h3>Sysmon & Event Log Analysis</h3>
+      <p>Monitor Windows systems and analyze events for potential threats.</p>
+      <span class="track-label">Intermediate Track</span>
+    </div>
+
+    <div class="course-col">
+      <h3>Email Phishing Investigation</h3>
+      <p>Learn how to investigate phishing emails and identify malicious content.</p>
+      <span class="track-label">Intermediate Track</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- Professional Courses -->
+    <div class="course-col">
+      <h3>Threat Hunting & Intelligence</h3>
+      <p>Hunt for advanced threats using modern cybersecurity tools and intelligence sources.</p>
+      <span class="track-label">Professional Track</span>
+    </div>
+
+    <div class="course-col">
+      <h3>Digital Forensics Foundations</h3>
+      <p>Collect, analyze, and preserve digital evidence to support investigations.</p>
+      <span class="track-label">Professional Track</span>
+    </div>
+
+    <div class="course-col">
+      <h3>Ethical Hacking & Penetration Testing</h3>
+      <p>Understand vulnerabilities and perform ethical penetration tests.</p>
+      <span class="track-label">Professional Track</span>
+    </div>
+  </div>
+</section>
+
+
+    <!-- Facilities Section -->
+    <section class="facilities">
+      <h1>Our Resources</h1>
+      <p>Everything you need to become a job-ready cybersecurity professional.</p>
+      <div class="row">
+        <div class="facilities-col">
+          <img src="./images/library.png" alt="Virtual Resource Library">
+          <h3>Virtual Resource Library</h3>
+          <p>Access a wide collection of study materials, labs, and recorded workshops to enhance your practical skills.</p>
+        </div>
+        <div class="facilities-col">
+          <img src="./images/basketball.png" alt="Live Training Sessions">
+          <h3>Live Training Sessions</h3>
+          <p>Participate in interactive workshops, webinars, and mentorship sessions led by experienced cybersecurity professionals.</p>
+        </div>
+        <div class="facilities-col">
+          <img src="./images/cafeteria.png" alt="Global Community Support">
+          <h3>Global Community</h3>
+          <p>Join a network of learners and professionals, share ideas, and collaborate on real-world projects and challenges.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <section class="footer">
+      <h4>About SecureHive</h4>
+      <p>SecureHive Academy is dedicated to making cybersecurity education accessible and affordable worldwide. From beginners to professionals, we guide you step-by-step to become job-ready.</p>
+      <div class="icons">
+        <i class="fa-brands fa-facebook"></i>
+        <i class="fa-brands fa-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-linkedin"></i>
+      </div>
+      <p>Made with <i class="fa-solid fa-heart"></i> by SecureHive Team</p>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
