@@ -4,42 +4,41 @@
   <meta charset="UTF-8">
   <title>Login - SecureHive Academy</title>
   <style>
-    /* Reset & Body */
     * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: linear-gradient(to right, #6a11cb, #2575fc);
-      height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       color: #333;
     }
-
-    /* Login Container */
     .login-container {
       background: #fff;
       padding: 40px 30px;
       border-radius: 12px;
-      width: 350px;
+      width: 400px;
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
       text-align: center;
     }
-
     h1 {
       margin-bottom: 20px;
       color: #2575fc;
     }
-
+    p {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+    }
     input {
       width: 100%;
-      padding: 12px 10px;
+      padding: 12px;
       margin: 10px 0;
       border-radius: 8px;
       border: 1px solid #ccc;
       font-size: 16px;
     }
-
     .btn {
       width: 100%;
       padding: 12px;
@@ -52,90 +51,137 @@
       cursor: pointer;
       transition: 0.3s;
     }
-
-    .btn:hover {
-      background: #6a11cb;
-    }
-
-    .signup-btn {
-      background: #6a11cb;
-    }
-
-    .signup-btn:hover {
-      background: #2575fc;
-    }
-
+    .btn:hover { background: #6a11cb; }
+    .signup-btn { background: #6a11cb; }
+    .signup-btn:hover { background: #2575fc; }
     .back-btn {
       margin-top: 20px;
       background: #ccc;
       color: #333;
     }
-
-    .back-btn:hover {
-      background: #aaa;
+    .back-btn:hover { background: #aaa; }
+    .tab-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
     }
-
-    p { font-size: 14px; margin-top: 5px; color: #555; }
+    .tab-btn {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      background: #ccc;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+    .tab-btn.active { background: #2575fc; color: white; }
   </style>
 </head>
 <body>
 
-  <div class="login-container">
-    <h1>SecureHive Academy</h1>
-    <p>Login to continue learning cybersecurity</p>
+<div class="login-container">
+  <h1>SecureHive Academy</h1>
+  <p>Choose Login or Sign Up to continue</p>
 
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
-
-    <button id="loginBtn" class="btn">Login</button>
-    <button id="signupBtn" class="btn signup-btn">Sign Up</button>
-
-    <button onclick="window.location.href='index.html'" class="btn back-btn">Back to Home</button>
+  <div class="tab-buttons">
+    <button id="showLogin" class="tab-btn active">Login</button>
+    <button id="showSignup" class="tab-btn">Sign Up</button>
   </div>
 
-  <!-- Firebase SDK -->
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
-    
-// Firebase CONFG
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  <!-- Login Form -->
+  <div id="loginForm">
+    <input type="email" id="loginEmail" placeholder="Email" required />
+    <input type="password" id="loginPassword" placeholder="Password" required />
+    <button id="loginBtn" class="btn">Login</button>
+  </div>
+
+  <!-- Sign Up Form -->
+  <div id="signupForm" style="display:none;">
+    <input type="email" id="signupEmail" placeholder="Email" required />
+    <input type="password" id="signupPassword" placeholder="Password" required />
+    <input type="password" id="confirmPassword" placeholder="Confirm Password" required />
+    <button id="signupBtn" class="btn signup-btn">Sign Up</button>
+  </div>
+
+  <button onclick="window.location.href='index.html'" class="btn back-btn">Back to Home</button>
+</div>
+
+<!-- Firebase SDK -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyB1abhLmMoqiLVD8neWxYJfS6CpxxjU14c",
-  authDomain: "hivetech-296e4.firebaseapp.com",
-  projectId: "hivetech-296e4",
-  storageBucket: "hivetech-296e4.firebasestorage.app",
-  messagingSenderId: "191321710659",
-  appId: "1:191321710659:web:9128f46a6dd715dda6f4f6",
-  measurementId: "G-2ZB3NJ2YL3"
+  apiKey: "AIzaSyDYs-nQinGdqgjsAAbXNuQyaYlEZT0PEZE",
+  authDomain: "hivetech-acadmey.firebaseapp.com",
+  projectId: "hivetech-acadmey",
+  storageBucket: "hivetech-acadmey.firebasestorage.app",
+  messagingSenderId: "455285837897",
+  appId: "1:455285837897:web:56bcaca022e4aafc102f98"
 };
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
 
-    // Login
-    document.getElementById("loginBtn").addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      try {
-        await signInWithEmailAndPassword(auth, email, password);
-        window.location.href = "beginnerlevel.html";
-      } catch (err) {
-        alert("Login failed: " + err.message);
-      }
-    });
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
 
-    // Sign Up
-    document.getElementById("signupBtn").addEventListener("click", async () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      try {
-        await createUserWithEmailAndPassword(auth, email, password);
-        alert("User created! Now login.");
-      } catch (err) {
-        alert("Sign Up failed: " + err.message);
-      }
-    });
-  </script>
+
+
+  // Tab Switch
+  const loginForm = document.getElementById("loginForm");
+  const signupForm = document.getElementById("signupForm");
+  const showLogin = document.getElementById("showLogin");
+  const showSignup = document.getElementById("showSignup");
+
+  showLogin.addEventListener("click", () => {
+    loginForm.style.display = "block";
+    signupForm.style.display = "none";
+    showLogin.classList.add("active");
+    showSignup.classList.remove("active");
+  });
+
+  showSignup.addEventListener("click", () => {
+    loginForm.style.display = "none";
+    signupForm.style.display = "block";
+    showSignup.classList.add("active");
+    showLogin.classList.remove("active");
+  });
+
+  // Login
+  document.getElementById("loginBtn").addEventListener("click", async () => {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    if (!email || !password) return alert("Please enter email and password");
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      window.location.href = "beginnerlevel.html";
+    } catch (err) {
+      alert("Login failed: " + err.message);
+    }
+  });
+
+  // Sign Up
+  document.getElementById("signupBtn").addEventListener("click", async () => {
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (!email || !password || !confirmPassword) {
+      return alert("Please fill in all fields");
+    }
+
+    if (password !== confirmPassword) {
+      return alert("Passwords do not match");
+    }
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Account created! Please login now.");
+      // Switch to login tab
+      showLogin.click();
+    } catch (err) {
+      alert("Sign Up failed: " + err.message);
+    }
+  });
+</script>
 
 </body>
 </html>
