@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beginner Level - SecureHive Academy</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+    }
+
+    header {
+      background: #4f46e5;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+    }
+    .back-btn {
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      background: #fff;
+      color: #4f46e5;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 85%;
+      margin: 40px auto;
+    }
+
+    .progress-container {
+      margin-bottom: 20px;
+    }
+    .progress-bar {
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #4f46e5;
+      width: 0%;
+      text-align: center;
+      color: white;
+      font-size: 12px;
+      line-height: 20px;
+    }
+
+    .course {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+
+    .course h2 {
+      margin: 0;
+      font-size: 20px;
+      color: #111827;
+    }
+
+    .course p {
+      color: #6b7280;
+      font-size: 14px;
+      margin: 10px 0;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 8px 16px;
+      background: #4f46e5;
+      color: #fff;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+      margin-top: 8px;
+    }
+    .btn:hover {
+      background: #4338ca;
+    }
+
+    .module-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      margin-top: 10px;
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .quiz iframe {
+      width: 100%;
+      height: 400px;
+      border: 0;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-btn">Back</a>
+    <h1>Beginner Level Courses</h1>
+  </header>
+
+  <div class="container">
+    <!-- Overall Progress -->
+    <div class="progress-container">
+      <p><strong>Overall Progress</strong></p>
+      <div class="progress-bar">
+        <div id="overallProgress" class="progress-bar-fill">0%</div>
+      </div>
+    </div>
+
+    <!-- Modules Start -->
+    <div class="course" data-course="intro">
+      <h2>Introduction to Cyber Security</h2>
+      <p>Learn the basics of cybersecurity, threats, safe practices, and why security matters.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_INTRO" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_INTRO/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-intro">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course" data-course="network">
+      <h2>Network Fundamentals</h2>
+      <p>Understand how networks work, OSI model, packets, and LAN basics.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_NETWORK" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_NETWORK/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-network">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course" data-course="web">
+      <h2>How The Web Works</h2>
+      <p>Learn about DNS, HTTP, and how websites operate together.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_WEB" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_WEB/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-web">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course" data-course="linux">
+      <h2>Linux Fundamentals</h2>
+      <p>Master Linux basics: commands, file systems, and security essentials.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_LINUX" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_LINUX/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-linux">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course" data-course="windows">
+      <h2>Windows Fundamentals</h2>
+      <p>Learn about Windows OS, navigation, and security features.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_WINDOWS" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_WINDOWS/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-windows">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course" data-course="crypto">
+      <h2>Cryptography Basics</h2>
+      <p>Understand encryption, hashing, and secure communication principles.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_CRYPTO" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_CRYPTO/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-crypto">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course" data-course="exploitation">
+      <h2>Exploitation Basics</h2>
+      <p>Learn how attackers exploit vulnerabilities and how to defend.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_EXPLOIT" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_EXPLOIT/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-exploitation">0%</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="course" data-course="solutions">
+      <h2>Security Solutions</h2>
+      <p>Explore firewalls, IDS/IPS, and practical defense mechanisms.</p>
+      <button class="btn" onclick="toggleModule(this)">Start Module</button>
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_SOLUTIONS" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_SOLUTIONS/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <button class="btn" onclick="markComplete(this)">✅ Mark Complete</button>
+        <div class="progress-bar" style="margin-top:10px;">
+          <div class="progress-bar-fill" id="progress-solutions">0%</div>
+        </div>
+      </div>
+    </div>
+    <!-- Modules End -->
+
+  </div>
+
+  <script>
+    function toggleModule(button) {
+      const content = button.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        button.textContent = "Start Module";
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        button.textContent = "Close Module";
+      }
+    }
+
+    function markComplete(button) {
+      const course = button.closest(".course").dataset.course;
+      localStorage.setItem(course, "completed");
+
+      const bar = document.getElementById("progress-" + course);
+      bar.style.width = "100%";
+      bar.textContent = "100%";
+
+      updateOverallProgress();
+    }
+
+    function updateOverallProgress() {
+      const courses = document.querySelectorAll(".course");
+      let completed = 0;
+
+      courses.forEach(c => {
+        if (localStorage.getItem(c.dataset.course) === "completed") {
+          completed++;
+          const bar = document.getElementById("progress-" + c.dataset.course);
+          if (bar) {
+            bar.style.width = "100%";
+            bar.textContent = "100%";
+          }
+        }
+      });
+
+      const percent = Math.round((completed / courses.length) * 100);
+      const overall = document.getElementById("overallProgress");
+      overall.style.width = percent + "%";
+      overall.textContent = percent + "%";
+    }
+
+    window.onload = updateOverallProgress;
+  </script>
+</body>
+</html>

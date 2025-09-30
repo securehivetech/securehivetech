@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - SecureHive Academy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #f4f7fa;
+      padding: 50px;
+    }
+    .btn {
+      padding: 12px 20px;
+      background: #4285F4;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Login to SecureHive Academy</h1>
+  <p>Please login with Google to continue.</p>
+  <button id="loginBtn" class="btn">Login with Google</button>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+
+  <script>
+    // Firebase config
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyB1abhLmMoqiLVD8neWxYJfS6CpxxjU14c",
+  authDomain: "hivetech-296e4.firebaseapp.com",
+  projectId: "hivetech-296e4",
+  storageBucket: "hivetech-296e4.firebasestorage.app",
+  messagingSenderId: "191321710659",
+  appId: "1:191321710659:web:9128f46a6dd715dda6f4f6",
+  measurementId: "G-2ZB3NJ2YL3"
+};
+
+
+    // Init Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    // Login
+    document.getElementById("loginBtn").addEventListener("click", () => {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      auth.signInWithPopup(provider).then(() => {
+        // Redirect to beginner modules
+        window.location.href = "beginnerlevel.html";
+      }).catch(err => alert(err.message));
+    });
+  </script>
+
+</body>
+</html>
