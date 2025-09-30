@@ -146,17 +146,28 @@ const firebaseConfig = {
   });
 
   // Login
-  document.getElementById("loginBtn").addEventListener("click", async () => {
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-    if (!email || !password) return alert("Please enter email and password");
-    try {
-      await signInWithEmailAndPassword(auth, email, password);
-      window.location.href = "beginnerlevel.html";
-    } catch (err) {
-      alert("Login failed: " + err.message);
-    }
-  });
+// Get level from URL query
+const params = new URLSearchParams(window.location.search);
+const level = params.get("level") || "beginner"; // default to beginner
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  const email = document.getElementById("loginEmail").value;
+  const password = document.getElementById("loginPassword").value;
+
+  if (!email || !password) return alert("Please enter email and password");
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+
+    // Redirect based on level
+    if (level === "beginner") window.location.href = "beginnerlevel.html";
+    else if (level === "professional") window.location.href = "professionallevel.html";
+    else if (level === "advanced") window.location.href = "advancedlevel.html";
+
+  } catch (err) {
+    alert("Login failed: " + err.message);
+  }
+});
 
   // Sign Up
   document.getElementById("signupBtn").addEventListener("click", async () => {
@@ -185,3 +196,4 @@ const firebaseConfig = {
 
 </body>
 </html>
+
