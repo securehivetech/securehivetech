@@ -173,106 +173,106 @@ nav .fa {
 
 /* course */
 
-.course {
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  padding-top: 100px;
-}
-h1 {
-  font-size: 36px;
-  font-weight: 600;
-}
-p {
-  color: #777;
-  font-size: 12px;
-  font-weight: 300;
-  line-height: 22px;
-  padding: 10px;
-}
-.row {
-  margin-top: 5%;
-  display: flex;
-  justify-content: space-between;
-}
-.course-col {
-  flex-basis: 31%;
-  background-color: #fff3f3;
-  border-radius: 10px;
-  margin-bottom: 5%;
-  padding: 20px 12px;
-  box-sizing: border-box;
-  transition: 0.5s;
-}
-h3 {
-  text-align: center;
-  font-weight: 600;
-  margin: 10px 0;
-}
-.course-col:hover {
-  box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.2);
-}
-@media (max-width: 700px) {
-  .row {
-    flex-direction: column;
-  }
-}
-.track-label {
-  display: block;
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #f44336; /* Red highlight for track name */
-  text-transform: uppercase;
-}
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #1e293b;
+    }
 
-/* campus */
+    /* Section */
+    .course {
+      width: 85%;
+      margin: auto;
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .course h1 {
+      font-size: 42px;
+      font-weight: 700;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+    .course > p {
+      color: #475569;
+      font-size: 16px;
+      line-height: 1.6;
+      max-width: 650px;
+      margin: 0 auto 50px;
+    }
 
-.campus {
-  width: 80%;
-  margin: auto;
-  text-align: center;
-  padding-top: 50px;
-}
-.campus-col {
-  flex-basis: 32%;
-  border-radius: 10px;
-  margin-bottom: 30px;
-  position: relative;
-  overflow: hidden;
-}
-.campus-col img {
-  width: 100%;
-  display: block;
-}
-.layer {
-  background: transparent;
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: 0.5s;
-}
-.layer:hover {
-  background: rgba(226, 0, 0, 0.7);
-}
-.layer h3 {
-  width: 100%;
-  font-weight: 300;
-  color: #fff;
-  font-size: 20px;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-  opacity: 0;
-  transition: 0.5s;
-}
-.layer:hover h3 {
-  bottom: 49%;
-  opacity: 1;
-}
+    /* Card Grid */
+    .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .course-col {
+      flex: 1;
+      min-width: 280px;
+      background: linear-gradient(145deg, #ffffff, #f1f5f9);
+      border-radius: 16px;
+      padding: 30px 20px;
+      box-sizing: border-box;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+    .course-col:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+    .course-col h3 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #1e293b;
+      margin-bottom: 15px;
+      position: relative;
+    }
+    .course-col h3::after {
+      content: "";
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: #4f46e5;
+      margin: 8px auto 0;
+      border-radius: 2px;
+    }
+    .course-col p {
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      background: #4f46e5;
+      color: #fff;
+      border-radius: 8px;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn:hover {
+      background: #4338ca;
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .row {
+        flex-direction: column;
+        align-items: center;
+      }
+      .course-col {
+        max-width: 500px;
+      }
+    }
+
 /* facilities */
 .facilities {
   width: 80%;
@@ -554,3 +554,4 @@ footer */
   width: 100%;
   text-align: center;
 }
+
