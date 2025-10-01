@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Advanced Level - SecureHive Academy</title>
+  <style>
+    body {
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #111827;
+      padding-bottom: 60px;
+    }
+    header {
+      background: #4f46e5;
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+      position: relative;
+    }
+    header h1 { margin:0; font-size:24px; }
+    .back-btn {
+      position: absolute;
+      left: 18px;
+      top: 14px;
+      background: #fff;
+      color: #4f46e5;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight:600;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 980px;
+      margin: 28px auto;
+    }
+
+    .progress-container { margin-bottom:18px; }
+    .progress-bar {
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #4f46e5;
+      width: 0%;
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+      line-height: 20px;
+      transition: width 0.4s ease;
+    }
+
+    .course {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+      margin-bottom: 16px;
+      padding: 18px;
+    }
+    .course h2 { margin: 0 0 8px 0; font-size:18px; color:#0f172a; }
+    .course p { margin: 0 0 12px 0; color:#6b7280; }
+
+    .module-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight:600;
+      background: #4f46e5;
+      color: white;
+    }
+    .btn.ghost { background: #eef2ff; color: #4f46e5; }
+    .btn.disabled { background:#f3f4f6; color:#9ca3af; cursor:not-allowed; }
+
+    .module-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+      margin-top: 10px;
+    }
+
+    .video-container { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin-bottom:12px; }
+    .video-container iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+
+    .quiz iframe { width:100%; height:420px; border:0; border-radius:8px; }
+
+    footer { text-align:center; color:#475569; margin-top:20px; font-size:14px; }
+
+    @media (max-width:700px) {
+      .container { width:95%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-btn">⬅ Home</a>
+    <h1>Advanced Level — Cybersecurity Career Skills</h1>
+  </header>
+
+  <main class="container">
+    <div class="progress-container">
+      <strong>Overall Progress</strong>
+      <div class="progress-bar" style="margin-top:8px;">
+        <div id="overallProgress" class="progress-bar-fill">0%</div>
+      </div>
+    </div>
+
+    <!-- MODULE: Penetration Tester -->
+    <section class="course" data-course="career1">
+      <h2>Penetration Tester</h2>
+      <p>Learn ethical hacking techniques, web and network penetration testing fundamentals.</p>
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="window.open('https://forms.gle/YOUR_FORM_CAREER1','_blank')">Register / Unlock</button>
+      </div>
+    </section>
+
+    <!-- MODULE: Incident Response Analyst -->
+    <section class="course" data-course="career2">
+      <h2>Incident Response Analyst</h2>
+      <p>Focus on investigating breaches, analyzing malware, and responding to cyber incidents.</p>
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="window.open('https://forms.gle/YOUR_FORM_CAREER2','_blank')">Register / Unlock</button>
+      </div>
+    </section>
+
+    <!-- MODULE: Cloud Security Specialist -->
+    <section class="course" data-course="career3">
+      <h2>Cloud Security Specialist</h2>
+      <p>Master securing cloud environments, identity management, and compliance frameworks.</p>
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="window.open('https://forms.gle/YOUR_FORM_CAREER3','_blank')">Register / Unlock</button>
+      </div>
+    </section>
+
+    <!-- MODULE: Cybersecurity Engineer -->
+    <section class="course" data-course="career4">
+      <h2>Cybersecurity Engineer</h2>
+      <p>Design and implement security architectures, firewalls, and monitoring systems.</p>
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="window.open('https://forms.gle/YOUR_FORM_CAREER4','_blank')">Register / Unlock</button>
+      </div>
+    </section>
+
+    <footer>
+      <p>All advanced modules are paid. Register via the form to unlock access. Progress will be tracked for logged-in users.</p>
+    </footer>
+  </main>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        window.location.href = "login.html?level=advanced";
+        return;
+      }
+      await loadProgress(user.uid);
+    });
+
+    function toggleModule(button) {
+      const content = button.closest(".module-actions").nextElementSibling;
+      if (!content) return;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        button.textContent = "Start Module";
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        button.textContent = "Close Module";
+      }
+    }
+
+    async function markComplete(moduleKey) {
+      const user = auth.currentUser;
+      if (!user) { alert("Please login to mark complete."); return; }
+      const ref = doc(db, "progress", user.uid);
+      const snap = await getDoc(ref);
+      let data = snap.exists() ? snap.data() : {};
+      data[moduleKey] = true;
+      await setDoc(ref, data, { merge: true });
+      updateOverallProgressFromData(data);
+    }
+
+    async function loadProgress(uid) {
+      const ref = doc(db, "progress", uid);
+      const snap = await getDoc(ref);
+      const data = snap.exists() ? snap.data() : {};
+      const modules = ["career1","career2","career3","career4"];
+      modules.forEach(m => {
+        if (data[m]) {
+          const bar = document.getElementById("progress-" + m);
+          if(bar) { bar.style.width="100%"; bar.textContent="100%"; }
+        }
+      });
+      updateOverallProgressFromData(data);
+    }
+
+    function updateOverallProgressFromData(data) {
+      const modules = ["career1","career2","career3","career4"];
+      let completed = 0;
+      modules.forEach(m => { if(data && data[m]) completed++; });
+      const percent = Math.round((completed/modules.length)*100);
+      const overall = document.getElementById("overallProgress");
+      overall.style.width = percent+"%";
+      overall.textContent = percent+"%";
+    }
+
+    window.toggleModule = toggleModule;
+    window.markComplete = markComplete;
+  </script>
+</body>
+</html>
