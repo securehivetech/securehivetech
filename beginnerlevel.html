@@ -290,6 +290,35 @@
 
   </div>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+  import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+
+  // Firebase config
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDYs-nQinGdqgjsAAbXNuQyaYlEZT0PEZE",
+  authDomain: "hivetech-acadmey.firebaseapp.com",
+  projectId: "hivetech-acadmey",
+  storageBucket: "hivetech-acadmey.firebasestorage.app",
+  messagingSenderId: "455285837897",
+  appId: "1:455285837897:web:56bcaca022e4aafc102f98"
+};
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
+  // ✅ Protect page
+  onAuthStateChanged(auth, (user) => {
+    if (!user) {
+      // User not logged in → redirect to login page
+      window.location.href = "login.html";
+    } else {
+      console.log("Logged in as:", user.email);
+      // You can initialize your modules and progress tracking here
+    }
+  });
+</script>
+
   <script>
     function toggleModule(button) {
       const content = button.nextElementSibling;
@@ -338,3 +367,4 @@
   </script>
 </body>
 </html>
+
