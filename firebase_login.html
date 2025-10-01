@@ -124,6 +124,77 @@ const firebaseConfig = {
   const auth = getAuth(app);
 
 
+  //  Make session persistent across tabs and reloads
+  setPersistence(auth, browserLocalPersistence)
+    .then(() => console.log("User session will persist across tabs and reloads"))
+    .catch(err => console.error(err));
+
+  // Check if user is already logged in
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      const params = new URLSearchParams(window.location.search);
+      const level = params.get("level") || "beginner";
+
+      // Redirect user automatically based on level
+      switch(level) {
+        case "beginner":
+          window.location.href = "beginnerlevel.html";
+          break;
+        case "professional":
+          window.location.href = "professionallevel.html";
+          break;
+        case "advanced":
+          window.location.href = "advancedlevel.html";
+          break;
+      }
+    }
+  });
+
+  // Login handler
+  document.getElementById("loginBtn").addEventListener("click", async () => {
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+    if (!email || !password) return alert("Please enter email and password");
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+
+      const params = new URLSearchParams(window.location.search);
+      const level = params.get("level") || "beginner";
+
+      switch(level) {
+        case "beginner":
+          window.location.href = "beginnerlevel.html";
+          break;
+        case "professional":
+          window.location.href = "professionallevel.html";
+          break;
+        case "advanced":
+          window.location.href = "advancedlevel.html";
+          break;
+      }
+    } catch (err) {
+      alert("Login failed: " + err.message);
+    }
+  });
+
+  // Sign Up handler
+  document.getElementById("signupBtn").addEventListener("click", async () => {
+    const email = document.getElementById("signupEmail").value;
+    const password = document.getElementById("signupPassword").value;
+    const confirmPassword = document.getElementById("confirmPassword").value;
+
+    if (!email || !password || !confirmPassword) return alert("Please fill all fields");
+    if (password !== confirmPassword) return alert("Passwords do not match");
+
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      alert("Account created! Please login now.");
+      document.getElementById("showLogin").click();
+    } catch (err) {
+      alert("Sign Up failed: " + err.message);
+    }
+  });
 
   // Tab Switch
   const loginForm = document.getElementById("loginForm");
@@ -196,4 +267,5 @@ document.getElementById("loginBtn").addEventListener("click", async () => {
 
 </body>
 </html>
+
 
