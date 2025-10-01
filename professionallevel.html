@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Professional Level - SecureHive Academy</title>
+  <style>
+    /* Basic layout & theme (matches beginner look) */
+    body {
+      margin:0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f8fafc;
+      color: #111827;
+      padding-bottom: 60px;
+    }
+    header {
+      background: #4f46e5;
+      color: #fff;
+      padding: 18px;
+      text-align: center;
+      position: relative;
+    }
+    header h1 { margin:0; font-size:24px; }
+    .back-btn {
+      position: absolute;
+      left: 18px;
+      top: 14px;
+      background: #fff;
+      color: #4f46e5;
+      padding: 8px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight:600;
+    }
+
+    .container {
+      width: 92%;
+      max-width: 980px;
+      margin: 28px auto;
+    }
+
+    .progress-container { margin-bottom:18px; }
+    .progress-bar {
+      background: #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      height: 20px;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      background: #4f46e5;
+      width: 0%;
+      text-align: center;
+      color: #fff;
+      font-size: 12px;
+      line-height: 20px;
+      transition: width 0.4s ease;
+    }
+
+    .course {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+      margin-bottom: 16px;
+      padding: 18px;
+    }
+    .course h2 { margin: 0 0 8px 0; font-size:18px; color:#0f172a; }
+    .course p { margin: 0 0 12px 0; color:#6b7280; }
+
+    .module-actions { display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:12px; }
+    .btn {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight:600;
+      background: #4f46e5;
+      color: white;
+    }
+    .btn.ghost { background: #eef2ff; color: #4f46e5; }
+    .btn.disabled { background:#f3f4f6; color:#9ca3af; cursor:not-allowed; }
+
+    .module-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+      margin-top: 10px;
+    }
+
+    .video-container { position:relative; padding-bottom:56.25%; height:0; overflow:hidden; border-radius:10px; margin-bottom:12px; }
+    .video-container iframe { position:absolute; top:0; left:0; width:100%; height:100%; border:0; }
+
+    .quiz iframe { width:100%; height:420px; border:0; border-radius:8px; }
+
+    footer { text-align:center; color:#475569; margin-top:20px; font-size:14px; }
+
+    @media (max-width:700px) {
+      .container { width:95%; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="back-btn">⬅ Home</a>
+    <h1>Professional Level Courses</h1>
+  </header>
+
+  <main class="container">
+    <div class="progress-container">
+      <strong>Overall Progress</strong>
+      <div class="progress-bar" style="margin-top:8px;">
+        <div id="overallProgress" class="progress-bar-fill">0%</div>
+      </div>
+    </div>
+
+    <!-- MODULE: Class 1 -->
+    <section class="course" data-course="class1">
+      <h2>Class 1 — Defensive Security Intro & Tooling / Offensive Security Intro & Tooling / Careers in Cyber</h2>
+      <p>Introductory overview of defensive/offensive toolsets and career pathways in cybersecurity.</p>
+
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="openInNewTab('https://www.youtube.com/playlist?list=YOUR_PLAYLIST_CLASS1')">Open Playlist</button>
+      </div>
+
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_CLASS1" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_CLASS1/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <div style="margin-top:10px;">
+          <button class="btn" onclick="markComplete('class1')">✅ Mark Complete</button>
+        </div>
+
+        <div class="progress-bar" style="margin-top:10px;">
+          <div id="progress-class1" class="progress-bar-fill">0%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE: Class 2 -->
+    <section class="course" data-course="class2">
+      <h2>Class 2 — Introduction to Pentesting / Security Principles</h2>
+      <p>Fundamentals of penetration testing methodology and security principles.</p>
+
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="openInNewTab('https://www.youtube.com/playlist?list=YOUR_PLAYLIST_CLASS2')">Open Playlist</button>
+      </div>
+
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_CLASS2" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_CLASS2/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <div style="margin-top:10px;">
+          <button class="btn" onclick="markComplete('class2')">✅ Mark Complete</button>
+        </div>
+
+        <div class="progress-bar" style="margin-top:10px;">
+          <div id="progress-class2" class="progress-bar-fill">0%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE: Class 3 -->
+    <section class="course" data-course="class3">
+      <h2>Class 3 — Web Hacking Introduction / Malware and Its Types</h2>
+      <p>Web vulnerabilities overview and fundamentals of malware classification.</p>
+
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="openInNewTab('https://www.youtube.com/playlist?list=YOUR_PLAYLIST_CLASS3')">Open Playlist</button>
+      </div>
+
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_CLASS3" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_CLASS3/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <div style="margin-top:10px;">
+          <button class="btn" onclick="markComplete('class3')">✅ Mark Complete</button>
+        </div>
+
+        <div class="progress-bar" style="margin-top:10px;">
+          <div id="progress-class3" class="progress-bar-fill">0%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE: Class 4 (Paid Lab) -->
+    <section class="course" data-course="class4_lab_paid">
+      <h2>Class 4 — Labs (Paid)</h2>
+      <p>This hands-on lab section is part of the paid content. Contact us to purchase access.</p>
+
+      <div class="module-actions">
+        <button class="btn ghost" onclick="window.location.href='contact.html'">Contact to Purchase</button>
+      </div>
+
+      <div class="progress-bar" style="margin-top:10px;">
+        <div id="progress-class4_lab_paid" class="progress-bar-fill">Locked</div>
+      </div>
+    </section>
+
+    <!-- MODULE: Class 5 -->
+    <section class="course" data-course="class5">
+      <h2>Class 5 — Vulnerability Fundamentals</h2>
+      <p>Deep dive into vulnerability types, CVE process, and risk assessment basics.</p>
+
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="openInNewTab('https://www.youtube.com/playlist?list=YOUR_PLAYLIST_CLASS5')">Open Playlist</button>
+      </div>
+
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_CLASS5" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_CLASS5/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <div style="margin-top:10px;">
+          <button class="btn" onclick="markComplete('class5')">✅ Mark Complete</button>
+        </div>
+
+        <div class="progress-bar" style="margin-top:10px;">
+          <div id="progress-class5" class="progress-bar-fill">0%</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULE: Class 6 (Paid Lab) -->
+    <section class="course" data-course="class6_lab_paid">
+      <h2>Class 6 — Labs (Paid)</h2>
+      <p>Advanced lab exercises — paid content. Contact us to gain access.</p>
+
+      <div class="module-actions">
+        <button class="btn ghost" onclick="window.location.href='contact.html'">Contact to Purchase</button>
+      </div>
+
+      <div class="progress-bar" style="margin-top:10px;">
+        <div id="progress-class6_lab_paid" class="progress-bar-fill">Locked</div>
+      </div>
+    </section>
+
+    <!-- MODULE: Class 7 -->
+    <section class="course" data-course="class7">
+      <h2>Class 7 — Privilege Escalation (Windows / Linux)</h2>
+      <p>Techniques and defenses for privilege escalation on common platforms.</p>
+
+      <div class="module-actions">
+        <button class="btn" onclick="toggleModule(this)">Start Module</button>
+        <button class="btn ghost" onclick="openInNewTab('https://www.youtube.com/playlist?list=YOUR_PLAYLIST_CLASS7')">Open Playlist</button>
+      </div>
+
+      <div class="module-content">
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/videoseries?list=YOUR_PLAYLIST_CLASS7" allowfullscreen></iframe>
+        </div>
+        <div class="quiz">
+          <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_CLASS7/viewform?embedded=true">Loading…</iframe>
+        </div>
+        <div style="margin-top:10px;">
+          <button class="btn" onclick="markComplete('class7')">✅ Mark Complete</button>
+        </div>
+
+        <div class="progress-bar" style="margin-top:10px;">
+          <div id="progress-class7" class="progress-bar-fill">0%</div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Signed in users' progress is saved to your account (Firestore). To sign out, go back home and use the sign-out option there (or contact admin).</p>
+    </footer>
+  </main>
+
+  <!-- Firebase + module logic -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
+    import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+
+    // ---------- PASTE YOUR FIREBASE CONFIG HERE ----------
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+    // ----------------------------------------------------
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    // protect page: require logged-in user
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        // redirect to login page with level param
+        window.location.href = "login.html?level=professional";
+        return;
+      }
+      // user is signed in -> load progress
+      await loadProgress(user.uid);
+    });
+
+    // helper: open playlists in a new tab (user convenience)
+    function openInNewTab(url) {
+      window.open(url, "_blank");
+    }
+
+    // toggle expand/collapse
+    function toggleModule(button) {
+      const content = button.closest(".module-actions").nextElementSibling;
+      if (!content) return;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+        button.textContent = "Start Module";
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+        button.textContent = "Close Module";
+      }
+    }
+
+    // mark module complete (saves to Firestore)
+    async function markComplete(moduleKey) {
+      const user = auth.currentUser;
+      if (!user) {
+        alert("Please login to mark complete.");
+        return;
+      }
+
+      const ref = doc(db, "progress", user.uid);
+      // get existing data
+      const snap = await getDoc(ref);
+      let data = snap.exists() ? snap.data() : {};
+      data[moduleKey] = true;
+      await setDoc(ref, data, { merge: true });
+
+      // update UI
+      const bar = document.getElementById("progress-" + moduleKey);
+      if (bar) {
+        bar.style.width = "100%";
+        bar.textContent = "100%";
+      }
+      updateOverallProgressFromData(data);
+    }
+
+    // load progress from Firestore and update UI
+    async function loadProgress(uid) {
+      const ref = doc(db, "progress", uid);
+      const snap = await getDoc(ref);
+      const data = snap.exists() ? snap.data() : {};
+
+      // map through modules
+      const modules = ["class1","class2","class3","class4_lab_paid","class5","class6_lab_paid","class7"];
+      modules.forEach(m => {
+        const bar = document.getElementById("progress-" + m);
+        if (!bar) return;
+        if (data[m]) {
+          bar.style.width = "100%";
+          bar.textContent = "100%";
+        } else {
+          // unpaid labs show Locked text
+          if (m.includes("lab_paid")) {
+            bar.style.width = "100%";
+            bar.textContent = "Locked";
+            bar.style.background = "#ef4444";
+            bar.style.color = "#fff";
+          } else {
+            bar.style.width = "0%";
+            bar.textContent = "0%";
+          }
+        }
+      });
+
+      updateOverallProgressFromData(data);
+    }
+
+    // compute and update overall progress
+    function updateOverallProgressFromData(data) {
+      const modules = ["class1","class2","class3","class5","class7"]; // exclude paid labs from percent
+      let completed = 0;
+      modules.forEach(m => { if (data && data[m]) completed++; });
+      const percent = Math.round((completed / modules.length) * 100);
+      const overall = document.getElementById("overallProgress");
+      overall.style.width = percent + "%";
+      overall.textContent = percent + "%";
+    }
+
+    // expose functions to global scope so inline handlers can call them
+    window.toggleModule = toggleModule;
+    window.markComplete = markComplete;
+    window.openInNewTab = openInNewTab;
+  </script>
+</body>
+</html>
